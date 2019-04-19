@@ -1,22 +1,21 @@
-const rp = require('request-promise');
-const cheerio = require('cheerio');
+// use puppeteer
 
-const url = 'https://iknow.jp/courses/566921'
-rp(url).then(
-  (data) => {
-    // console.log(data)
-    const newData = cheerio.load(data);
-    // console.log(newData.html())
-    scrape(newData)
-  }
-).catch((err) => {
-  console.log('There was an error scraping data: ', err)
-})
+const puppeteer = require('puppeteer');
 
-function scrape(data) {
-  console.log('running')
-  cheerio('.items', data).each(() => {
-    console.log('item: ')
-    console.log(cheerio(this));
-  });
-}
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://iknow.jp/courses/566921');
+  const items = await page.$$eval('.cue-response', cues => cues.map((item, i) => {
+    const kanji = item.querySelector('.cue').innerHTML
+    const kana = item.querySelector('p[class=text] > .transliteration') ? item.querySelector('p[class=text] > .transliteration').textContent : null
+    const eng = item.querySelector('.response').textContent
+    return { kan: kanji, tran: kana, english: eng, id: i }
+  }));
+
+  // const ebg = await page.$$eval('.cue', cues => cues.map((item, i) => {
+  //   return { name: item.innerHTML, id: i }
+  // }));
+  console.log(items);
+  await browser.close();
+})();
