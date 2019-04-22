@@ -111,7 +111,6 @@ class App extends Component {
         }
       )
       this.setState({ badCardData }, () => {
-        console.log(badCardData)
         return localStorage.setItem('badCardData', JSON.stringify(badCardData))
       })
     }
