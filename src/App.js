@@ -40,15 +40,14 @@ class App extends Component {
 
   removeAllUsedCards = () => {
     const { cards } = this.state;
-    if (JSON.parse(localStorage.getItem('goodCardData'))) {
-      const goodCards = JSON.parse(localStorage.getItem('goodCardData'));
-      const filteredGoodCards = cards.map(card => {
-        if (!goodCards.find(c => c.id === card.id && c.set === this.state.currentSet)) {
-          return card
-        }
-      })
-      this.setState({ cards: filteredGoodCards.filter(card => card) })
-    }
+    const goodCards = JSON.parse(localStorage.getItem('goodCardData')) || [];
+    const badCards = JSON.parse(localStorage.getItem('badCardData')) || [];
+    const filteredCards = cards.map(card => {
+      if (!goodCards.find(c => c.id === card.id && c.set === this.state.currentSet) && !badCards.find(c => c.id === card.id && c.set === this.state.currentSet)) {
+        return card
+      }
+    })
+    this.setState({ cards: filteredCards.filter(card => card) })
   }
 
   componentDidMount() {
