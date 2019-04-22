@@ -31,12 +31,12 @@ class App extends Component {
   getSaveData = () => {
     if (JSON.parse(localStorage.getItem('goodCardData'))) {
       this.setState({ goodCardData: JSON.parse(localStorage.getItem('goodCardData')) }, () => {
-        this.setState({ cardsGood: this.state.goodCardData.length })
+        this.setState({ cardsGood: this.state.goodCardData.filter(c => c.set === this.state.currentSet).length })
       })
     }
     if (JSON.parse(localStorage.getItem('badCardData'))) {
       this.setState({ badCardData: JSON.parse(localStorage.getItem('badCardData')) }, () => {
-        this.setState({ cardsBad: this.state.badCardData.length })
+        this.setState({ cardsBad: this.state.badCardData.filter(c => c.set === this.state.currentSet).length })
       })
     }
   }
@@ -166,7 +166,7 @@ class App extends Component {
         <Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
         <button onClick={() => this.updateCardData('bad')}>Hard</button>
         <button onClick={() => this.updateCardData('good')}>Easy</button>
-        <div>Score: {cardsGood || '0'}/100</div>
+        <div>Easy: {cardsGood || '0'}/100</div>
         <div>Hard: {cardsBad || '0'}/100</div>
       </Container >
     );
