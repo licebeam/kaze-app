@@ -70,8 +70,6 @@ class App extends Component {
         }
         <Card cards={cards} place={place} startTimer={this.startTimer} timer={timer} />
         <button onClick={() => this.updateCardData('skip')}>Skip</button>
-        {/* TODO add this when saving functionality is implemented */}
-
         <button onClick={() => this.updateCardData('bad')}>Hard</button>
         <button onClick={() => this.updateCardData('good')}>Easy</button>
         <div>Score: {cardsGood || '0'}/100</div>
