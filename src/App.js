@@ -29,19 +29,30 @@ class App extends Component {
     currentSet: 'core100'
   }
 
+  getSaveData = () => {
+    if (JSON.parse(localStorage.getItem('goodCardData'))) {
+      this.setState({ goodCardData: JSON.parse(localStorage.getItem('goodCardData')) })
+    }
+    if (JSON.parse(localStorage.getItem('badCardData'))) {
+      this.setState({ badCardData: JSON.parse(localStorage.getItem('badCardData')) })
+    }
+  }
+
   removeAllUsedCards = () => {
     const { cards } = this.state;
-    const goodCards = JSON.parse(localStorage.getItem('goodCardData'));
-    const filteredGoodCards = cards.map(card => {
-      if (!goodCards.find(c => c.id === card.id)) {
-        return card
-      }
-    })
-    console.log(filteredGoodCards)
-    this.setState({ cards: filteredGoodCards })
+    if (JSON.parse(localStorage.getItem('goodCardData'))) {
+      const goodCards = JSON.parse(localStorage.getItem('goodCardData'));
+      const filteredGoodCards = cards.map(card => {
+        if (!goodCards.find(c => c.id === card.id)) {
+          return card
+        }
+      })
+      this.setState({ cards: filteredGoodCards.filter(card => card) })
+    }
   }
 
   componentDidMount() {
+    this.getSaveData()
     this.removeAllUsedCards()
   }
 
@@ -89,13 +100,13 @@ class App extends Component {
     const { cardsGood, cardsBad, cardsSkipped } = this.state;
     switch (type) {
       case 'good':
-        this.setState({ cardsGood: cardsGood + 1 }, () => { this.saveCardToStorage('good'); this.updatePlace(1) })
+        this.setState({ cardsGood: cardsGood + 1 }, () => { this.saveCardToStorage('good'); })
         break;
       case 'bad':
-        this.setState({ cardsBad: cardsBad + 1 }, () => { this.saveCardToStorage('bad'); this.updatePlace(1) })
+        this.setState({ cardsBad: cardsBad + 1 }, () => { this.saveCardToStorage('bad'); })
         break;
       case 'skip':
-        this.setState({ cardsSkipped: cardsSkipped + 1 }, () => { this.saveCardToStorage('bad'); this.updatePlace(1) })
+        this.setState({ cardsSkipped: cardsSkipped + 1 }, () => { this.saveCardToStorage('bad'); })
         break;
 
       default:
@@ -115,6 +126,7 @@ class App extends Component {
         }
       )
       this.setState({ goodCardData }, () => {
+        this.updatePlace(1)
         return localStorage.setItem('goodCardData', JSON.stringify(goodCardData))
       })
     } else {
@@ -127,6 +139,7 @@ class App extends Component {
         }
       )
       this.setState({ badCardData }, () => {
+        this.updatePlace(1)
         return localStorage.setItem('badCardData', JSON.stringify(badCardData))
       })
     }
