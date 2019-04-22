@@ -10,6 +10,9 @@ class Card extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.place !== this.props.place) {
       this.setState({ flipped: false })
+      if (this.props.timer) {
+        this.props.startTimer(4000)
+      }
     }
   }
 

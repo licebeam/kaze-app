@@ -20,16 +20,18 @@ class App extends Component {
   }
 
   startTimer = (time) => {
-    this.setState({ timer: !this.state.timer }, () => {
+    clearTimeout(timerId)
+    this.setState({ timer: true }, () => {
       if (this.state.timer) {
-        timerId = setInterval(() => {
-          this.updatePlace(1);
+        timerId = setTimeout(() => {
+          this.updateCardData('skip')
         }, time)
       }
-      if (!this.state.timer) {
-        clearInterval(timerId)
-      }
     })
+  }
+
+  stopTimer = () => {
+    this.setState({ timer: false })
   }
 
   updateCardData = (type) => {
@@ -54,18 +56,19 @@ class App extends Component {
     const { cards, place, timer, cardsGood, cardsBad, cardsSkipped } = this.state;
     return (
       <div className="App">
-        <button onClick={() => this.startTimer(4000)}>{timer ? 'Stop Timer' : 'Start Timer'}</button>
-        <Card cards={cards} place={place} />
-        {!timer ? (<div>
-          <button onClick={() => this.updateCardData('skip')}>Skip</button>
-          {/* TODO add this when saving functionality is implemented */}
+        {!timer
+          ? (<button onClick={() => this.startTimer(4000)}>Start Timer</button>)
+          : (<button onClick={() => this.stopTimer()}>Stop Timer</button>)
+        }
+        <Card cards={cards} place={place} startTimer={this.startTimer} timer={timer} />
+        <button onClick={() => this.updateCardData('skip')}>Skip</button>
+        {/* TODO add this when saving functionality is implemented */}
 
-          <button onClick={() => this.updateCardData('bad')}>Hard</button>
-          <button onClick={() => this.updateCardData('good')}>Easy</button>
-          <div>Score: {cardsGood || '0'}/100</div>
-          <div>Hard: {cardsBad || '0'}/100</div>
-          <div>Skipped: {cardsSkipped || '0'}/100</div>
-        </div>) : null}
+        <button onClick={() => this.updateCardData('bad')}>Hard</button>
+        <button onClick={() => this.updateCardData('good')}>Easy</button>
+        <div>Score: {cardsGood || '0'}/100</div>
+        <div>Hard: {cardsBad || '0'}/100</div>
+        <div>Skipped: {cardsSkipped || '0'}/100</div>
       </div >
     );
   }
