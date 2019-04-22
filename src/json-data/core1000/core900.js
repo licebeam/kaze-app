@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: 'うまい',
   tran: 'null',
   english: 'delicious, tasty (used by male)',

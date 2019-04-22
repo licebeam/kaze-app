@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: 'あちこち',
   tran: 'null',
   english: 'all over, here and there',

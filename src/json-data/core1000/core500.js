@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '問題',
   tran: 'もんだい',
   english: 'problem, question',

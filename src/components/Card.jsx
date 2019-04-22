@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { throws } from 'assert';
 
 let timerBarId;
 class Card extends Component {

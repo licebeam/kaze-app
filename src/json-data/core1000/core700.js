@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: 'なるほど',
   tran: 'null',
   english: 'I see, now I understand',

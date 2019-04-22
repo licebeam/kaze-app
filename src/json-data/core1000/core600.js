@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '氏名',
   tran: 'しめい',
   english: 'full name',

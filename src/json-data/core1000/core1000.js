@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '何か',
   tran: 'なにか',
   english: 'something, some',

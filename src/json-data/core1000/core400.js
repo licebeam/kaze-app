@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '易しい',
   tran: 'やさしい',
   english: 'easy, simple (colloquial)',
