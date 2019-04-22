@@ -23,7 +23,7 @@ class App extends Component {
     timer: false,
     cardsGood: null,
     cardsSkipped: null,
-    cardsBad: null
+    cardsBad: null,
   }
 
   changeSet = (set) => {
@@ -91,8 +91,8 @@ class App extends Component {
         <div>
           <select onChange={(e) => this.setState({ title: e.target.value })}>
             <option value='Core 1000'>Core 1000</option>
-            <option value='Core 2000'>Core 2000</option>
-            <option value='Core 3000'>Core 3000</option>
+            {/* <option value='Core 2000'>Core 2000</option>
+            <option value='Core 3000'>Core 3000</option> */}
           </select>
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />

@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 
 class Card extends Component {
-  state = { flipped: false }
+  state = {
+    flipped: false,
+    showKanji: true,
+    showKana: true,
+    showSentences: true,
+  }
 
   flipCard = () => {
     this.setState({ flipped: !this.state.flipped })
@@ -18,7 +23,13 @@ class Card extends Component {
 
   render() {
     const { cards, place } = this.props;
-    const { flipped } = this.state;
+
+    const {
+      flipped,
+      showKanji,
+      showKana,
+      showSentences,
+    } = this.state;
 
     return (
       <div>
@@ -26,31 +37,51 @@ class Card extends Component {
           <div>
             {cards[place].id}
             <br></br>
-            {cards[place].kan}
+            {showKanji ? (
+              <div>
+                {cards[place].kan}
+              </div>
+            ) : null}
             <br></br>
-            {cards[place].tran !== 'null' ? cards[place].tran : null}
+            {showKana ? (
+              <div>
+                {cards[place].tran !== 'null' ? cards[place].tran : null}
+              </div>
+            ) : null}
             <br></br>
             <p>Translation:</p>
             {cards[place].english !== 'null' ? cards[place].english : null}
-            <p>Sentences:</p>
-            {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
-            <br></br>
-            {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
-            <br></br>
-            {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
+            {showSentences ? (
+              <div>
+                <p>Sentences:</p>
+                {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                <br></br>
+                {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                <br></br>
+                {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
+              </div>
+            ) : null}
+            <button>Show</button>
           </div>
         ) : (
             <div>
               {cards[place].id}
               <br></br>
-              {cards[place].kan}
+              {showKanji ? (<div>{cards[place].kan}</div>) : null}
+              <button onClick={() => this.setState({ showKanji: !showKanji })}>test</button>
               <br></br>
-              {cards[place].tran !== 'null' ? cards[place].tran : null}
+              {showKana ? (<div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>) : null}
+              <button onClick={() => this.setState({ showKana: !showKana })}>test</button>
               <br></br>
-              <p>Sentences:</p>
-              {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
-              <br></br>
-              {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+              {showSentences ? (
+                <div>
+                  <p>Sentences:</p>
+                  {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                  <br></br>
+                  {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                </div>
+              ) : null}
+              <button onClick={() => this.setState({ showSentences: !showSentences })}>test</button>
             </div>
           )
         }
