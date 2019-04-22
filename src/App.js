@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   stopTimer = () => {
+    clearTimeout(timerId)
     this.setState({ timer: false })
   }
 
