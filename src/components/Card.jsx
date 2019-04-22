@@ -42,12 +42,14 @@ class Card extends Component {
                 {cards[place].kan}
               </div>
             ) : null}
+            <button onClick={() => this.setState({ showKanji: !showKanji })}>test</button>
             <br></br>
             {showKana ? (
               <div>
                 {cards[place].tran !== 'null' ? cards[place].tran : null}
               </div>
             ) : null}
+            <button onClick={() => this.setState({ showKana: !showKana })}>test</button>
             <br></br>
             <p>Translation:</p>
             {cards[place].english !== 'null' ? cards[place].english : null}
@@ -61,7 +63,7 @@ class Card extends Component {
                 {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
               </div>
             ) : null}
-            <button>Show</button>
+            <button onClick={() => this.setState({ showSentences: !showSentences })}>test</button>
           </div>
         ) : (
             <div>
