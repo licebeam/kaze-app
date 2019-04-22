@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   startTimer = (time) => {
-    //TODO: protect against the length of the selected cards
     this.setState({ timer: !this.state.timer }, () => {
       if (this.state.timer) {
         timerId = setInterval(() => {
