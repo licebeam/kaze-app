@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { throws } from 'assert';
 
+let timerBarId;
 class Card extends Component {
   state = {
     flipped: false,
@@ -9,20 +11,29 @@ class Card extends Component {
   }
 
   flipCard = () => {
-    this.setState({ flipped: !this.state.flipped })
+    this.setState({ flipped: !this.state.flipped, timerBar: 0 })
   }
 
   componentDidUpdate(prevProps) {
-
     if (prevProps.place !== this.props.place) {
-      localStorage.setItem('test', 'help local is working')
-      var local = localStorage.getItem('test')
-      console.log(local)
+      // localStorage.setItem('test', 'help local is working')
+      // var local = localStorage.getItem('test')
+      // console.log(local)
       this.setState({ flipped: false })
       if (this.props.timer) {
-        this.props.startTimer(4000)
+        this.setState({ timerBar: 0 }, () => {
+          clearInterval(timerBarId);
+          this.updateTimer()
+          this.props.startTimer(4000)
+        })
       }
     }
+  }
+
+  updateTimer = () => {
+    timerBarId = setInterval(() => {
+      this.setState({ timerBar: this.state.timerBar + 1 })
+    }, 40);
   }
 
   render() {
@@ -33,10 +44,12 @@ class Card extends Component {
       showKanji,
       showKana,
       showSentences,
+      timerBar,
     } = this.state;
 
     return (
       <div>
+        <p>{timerBar}</p>
         {flipped ? (
           <div>
             {cards[place].id}
