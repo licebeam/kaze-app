@@ -43,7 +43,7 @@ class App extends Component {
     if (JSON.parse(localStorage.getItem('goodCardData'))) {
       const goodCards = JSON.parse(localStorage.getItem('goodCardData'));
       const filteredGoodCards = cards.map(card => {
-        if (!goodCards.find(c => c.id === card.id)) {
+        if (!goodCards.find(c => c.id === card.id && c.set === this.state.currentSet)) {
           return card
         }
       })
@@ -54,6 +54,13 @@ class App extends Component {
   componentDidMount() {
     this.getSaveData()
     this.removeAllUsedCards()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.currentSet !== this.state.currentSet) {
+      this.getSaveData()
+      this.removeAllUsedCards()
+    }
   }
 
   changeSet = (cards, set) => {
