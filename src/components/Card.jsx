@@ -16,6 +16,10 @@ class Card extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (prevProps.cards !== this.props.cards) {
+      this.setState({ timerBar: 0 })
+      clearInterval(timerBarId);
+    }
     if (prevProps.place !== this.props.place) {
       // localStorage.setItem('test', 'help local is working')
       // var local = localStorage.getItem('test')
