@@ -96,11 +96,7 @@ class App extends Component {
           </select>
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
-        {!timer
-          ? (<button onClick={() => this.startTimer(4000)}>Start Timer</button>)
-          : (<button onClick={() => this.stopTimer()}>Stop Timer</button>)
-        }
-        <Card cards={cards} place={place} startTimer={this.startTimer} timer={timer} />
+        <Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
         <button onClick={() => this.updateCardData('skip')}>Skip</button>
         <button onClick={() => this.updateCardData('bad')}>Hard</button>
         <button onClick={() => this.updateCardData('good')}>Easy</button>
