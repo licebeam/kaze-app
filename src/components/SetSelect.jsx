@@ -29,9 +29,9 @@ class SetSelect extends Component {
       <div>
         {title === 'Core 1000' ? (
           <select onChange={(e) => this.changeCards(e.target.value)}>
-            <option value='core100'>100</option>
-            <option value='core200'>200</option>
-            <option value='core300'>300</option>
+            <option value='core100'>Set 1-100</option>
+            <option value='core200'>Set 101-200</option>
+            <option value='core300'>Set 201-300</option>
           </select>
         ) : null
         }
