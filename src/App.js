@@ -24,6 +24,8 @@ class App extends Component {
     cardsGood: null,
     cardsSkipped: null,
     cardsBad: null,
+    goodCardData: [],
+    badCardData: [],
   }
 
   changeSet = (set) => {
@@ -69,17 +71,26 @@ class App extends Component {
     const { cardsGood, cardsBad, cardsSkipped } = this.state;
     switch (type) {
       case 'good':
-        this.setState({ cardsGood: cardsGood + 1 }, () => { this.updatePlace(1) })
+        this.setState({ cardsGood: cardsGood + 1 }, () => { this.saveCardToStorage('good'); this.updatePlace(1) })
         break;
       case 'bad':
-        this.setState({ cardsBad: cardsBad + 1 }, () => { this.updatePlace(1) })
+        this.setState({ cardsBad: cardsBad + 1 }, () => { this.saveCardToStorage('bad'); this.updatePlace(1) })
         break;
       case 'skip':
-        this.setState({ cardsSkipped: cardsSkipped + 1 }, () => { this.updatePlace(1) })
+        this.setState({ cardsSkipped: cardsSkipped + 1 }, () => { this.saveCardToStorage('bad'); this.updatePlace(1) })
         break;
 
       default:
         break;
+    }
+  }
+
+  saveCardToStorage = (type) => {
+    const { goodCardData, badCardData } = this.state;
+    if (type === 'good') {
+      return localStorage.set('goodCardData', goodCardData)
+    } else {
+      return localStorage.set('badCardData', badCardData)
     }
   }
 
