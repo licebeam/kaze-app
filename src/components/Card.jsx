@@ -21,8 +21,8 @@ class Card extends Component {
       clearInterval(timerBarId);
     }
     if (prevProps.place !== this.props.place) {
-      // localStorage.setItem('test', 'help local is working')
-      // var local = localStorage.getItem('test')
+      // localStorage.setItem('Show/Hide', 'help local is working')
+      // var local = localStorage.getItem('Show/Hide')
       // console.log(local)
       this.setState({ flipped: false })
       if (this.props.timer) {
@@ -75,14 +75,14 @@ class Card extends Component {
                   {cards[place].kan}
                 </div>
               ) : null}
-              <button onClick={() => this.setState({ showKanji: !showKanji })}>test</button>
+              <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
               <br></br>
               {showKana ? (
                 <div>
                   {cards[place].tran !== 'null' ? cards[place].tran : null}
                 </div>
               ) : null}
-              <button onClick={() => this.setState({ showKana: !showKana })}>test</button>
+              <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
               <br></br>
               <p>Translation:</p>
               {cards[place].english !== 'null' ? cards[place].english : null}
@@ -96,17 +96,17 @@ class Card extends Component {
                   {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
                 </div>
               ) : null}
-              <button onClick={() => this.setState({ showSentences: !showSentences })}>test</button>
+              <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
             </div>
           ) : (
               <div>
                 {cards[place].id}
                 <br></br>
                 {showKanji ? (<div>{cards[place].kan}</div>) : null}
-                <button onClick={() => this.setState({ showKanji: !showKanji })}>test</button>
+                <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
                 <br></br>
                 {showKana ? (<div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>) : null}
-                <button onClick={() => this.setState({ showKana: !showKana })}>test</button>
+                <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
                 <br></br>
                 {showSentences ? (
                   <div>
@@ -116,7 +116,7 @@ class Card extends Component {
                     {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
                   </div>
                 ) : null}
-                <button onClick={() => this.setState({ showSentences: !showSentences })}>test</button>
+                <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
               </div>
             )
         }
