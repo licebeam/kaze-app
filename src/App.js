@@ -29,6 +29,22 @@ class App extends Component {
     currentSet: 'core100'
   }
 
+  removeAllUsedCards = () => {
+    const { cards } = this.state;
+    const goodCards = JSON.parse(localStorage.getItem('goodCardData'));
+    const filteredGoodCards = cards.map(card => {
+      if (!goodCards.find(c => c.id === card.id)) {
+        return card
+      }
+    })
+    console.log(filteredGoodCards)
+    this.setState({ cards: filteredGoodCards })
+  }
+
+  componentDidMount() {
+    this.removeAllUsedCards()
+  }
+
   changeSet = (cards, set) => {
     this.setState({
       cards: cards,
