@@ -9,7 +9,14 @@ class App extends Component {
   state = { cards: core100, place: 0, timer: false }
 
   updatePlace = (num) => {
-    this.setState({ place: this.state.place + num })
+    const { place } = this.state;
+    if (num === 1 && place <= 98) {
+      this.setState({ place: this.state.place + num })
+    }
+    if (num === -1 && place >= 1) {
+      this.setState({ place: this.state.place + num })
+    }
+
   }
 
   startTimer = (time) => {

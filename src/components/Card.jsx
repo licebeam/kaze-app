@@ -21,13 +21,27 @@ class Card extends Component {
       <div>
         {flipped ? (
           <div>
-            {cards[place].english}
+            {cards[place].id}
+            <br></br>
+            {cards[place].kan}
+            <br></br>
+            {cards[place].tran !== 'null' ? cards[place].tran : null}
+            <br></br>
+            <p>Translation:</p>
+            {cards[place].english !== 'null' ? cards[place].english : null}
+            <p>Sentences:</p>
+            {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+            <br></br>
+            {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+            <br></br>
+            {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
           </div>
         ) : (
             <div>
               {cards[place].id}
               <br></br>
               {cards[place].kan}
+              <br></br>
               {cards[place].tran !== 'null' ? cards[place].tran : null}
               <br></br>
               <p>Sentences:</p>
