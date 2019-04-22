@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '美しい',
   tran: 'うつくしい',
   english: 'beautiful',

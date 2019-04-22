@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '閉じる',
   tran: 'とじる',
   english: 'shut, close (books, eyes, etc.)',
