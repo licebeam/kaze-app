@@ -93,7 +93,7 @@ class App extends Component {
     this.setState({ timer: true }, () => {
       if (this.state.timer) {
         timerId = setTimeout(() => {
-          this.updateCardData('skip')
+          this.updateCardData('bad')
         }, time)
       }
     })
