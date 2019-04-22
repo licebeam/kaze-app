@@ -151,7 +151,7 @@ class App extends Component {
   }
 
   render() {
-    const { cards, place, timer, cardsGood, cardsBad, title } = this.state;
+    const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet } = this.state;
     return (
       <Container className="App">
         <h2>{title}</h2>
@@ -163,6 +163,7 @@ class App extends Component {
           </select>
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
+        {badCardData.find(c => c.set === this.state.currentSet) ? (<button>Review</button>) : null}
         <Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
         <button onClick={() => this.updateCardData('bad')}>Hard</button>
         <button onClick={() => this.updateCardData('good')}>Easy</button>
