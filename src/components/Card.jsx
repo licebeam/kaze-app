@@ -17,7 +17,7 @@ class Card extends Component {
     const { flipped } = this.state;
 
     return (
-      <div> Check out this card
+      <div>
         {flipped ? (
           <div>
             {cards[place].english}
@@ -25,7 +25,6 @@ class Card extends Component {
         ) : (
             <div>
               {cards[place].kan}
-              <br />
               {cards[place].tran !== 'null' ? cards[place].tran : null}
             </div>
           )
