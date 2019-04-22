@@ -154,9 +154,7 @@ class App extends Component {
 
   startReview = () => {
     const { allCards, badCardData, currentSet } = this.state;
-    console.log(allCards)
-    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0 })
-    console.log('starting review')
+    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0, cardsGood: 0, cardsBad: 0 })
   }
 
   render() {
@@ -173,7 +171,7 @@ class App extends Component {
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
         {badCardData.find(c => c.set === currentSet) ? (<button onClick={() => this.startReview()}>Review</button>) : null}
-        {cards && cards.length && (cardsGood + cardsBad !== 100) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
+        {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
           <button onClick={() => this.updateCardData('bad')}>Hard</button>
           <button onClick={() => this.updateCardData('good')}>Easy</button></div>) : <div>COMPLETED</div>}
 
