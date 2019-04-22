@@ -1,4 +1,4 @@
-[
+export default [
   {
     kan: '行く',
     tran: 'いく',
