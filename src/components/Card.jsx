@@ -20,9 +20,6 @@ class Card extends Component {
       clearInterval(timerBarId);
     }
     if (prevProps.place !== this.props.place) {
-      // localStorage.setItem('Show/Hide', 'help local is working')
-      // var local = localStorage.getItem('Show/Hide')
-      // console.log(local)
       this.setState({ flipped: false })
       if (this.props.timer) {
         this.setState({ timerBar: 0 }, () => {
