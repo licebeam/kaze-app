@@ -122,6 +122,7 @@ class App extends Component {
   }
 
   saveCardToStorage = (type) => {
+    //TODO remove cards from bad if they update from bad to good.
     let { goodCardData, badCardData, place, title, currentSet, cards } = this.state;
     if (type === 'good') {
       goodCardData.push(
