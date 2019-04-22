@@ -12,6 +12,7 @@ class Card extends Component {
       this.setState({ flipped: false })
     }
   }
+
   render() {
     const { cards, place } = this.props;
     const { flipped } = this.state;
