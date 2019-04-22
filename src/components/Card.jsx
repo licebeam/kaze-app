@@ -25,8 +25,15 @@ class Card extends Component {
           </div>
         ) : (
             <div>
+              {cards[place].id}
+              <br></br>
               {cards[place].kan}
               {cards[place].tran !== 'null' ? cards[place].tran : null}
+              <br></br>
+              <p>Sentences:</p>
+              {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+              <br></br>
+              {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
             </div>
           )
         }

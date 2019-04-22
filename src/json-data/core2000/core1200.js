@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '毎年',
   tran: 'まいねん',
   english: 'every year (formal)',

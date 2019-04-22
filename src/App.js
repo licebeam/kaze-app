@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Card from './components/Card';
 import './App.css';
-import core100 from './json-data/core1000/core100';
+import core100 from './json-data/core2000/core1200';
 
 let timerId = null;
+
 class App extends Component {
   state = { cards: core100, place: 0, timer: false }
 
@@ -12,6 +13,7 @@ class App extends Component {
   }
 
   startTimer = (time) => {
+    //TODO: protect against the length of the selected cards
     this.setState({ timer: !this.state.timer }, () => {
       if (this.state.timer) {
         timerId = setInterval(() => {
