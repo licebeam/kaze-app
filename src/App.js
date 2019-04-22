@@ -88,9 +88,7 @@ class App extends Component {
   }
 
   saveCardToStorage = (type) => {
-    const { goodCardData, badCardData, place, title, currentSet } = this.state;
-    let goodCardData;
-    let badCardData;
+    let { goodCardData, badCardData, place, title, currentSet, cards } = this.state;
     if (type === 'good') {
       goodCardData.push(
         {
@@ -101,7 +99,7 @@ class App extends Component {
         }
       )
       this.setState({ goodCardData }, () => {
-        return localStorage.set('goodCardData', goodCardData)
+        return localStorage.setItem('goodCardData', JSON.stringify(goodCardData))
       })
     } else {
       badCardData.push(
@@ -113,7 +111,8 @@ class App extends Component {
         }
       )
       this.setState({ badCardData }, () => {
-        return localStorage.set('badCardData', badCardData)
+        console.log(badCardData)
+        return localStorage.setItem('badCardData', JSON.stringify(badCardData))
       })
     }
   }
