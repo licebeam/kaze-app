@@ -155,7 +155,7 @@ class App extends Component {
   startReview = () => {
     const { allCards, badCardData, currentSet } = this.state;
     console.log(allCards)
-    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet)), place: 0 })
+    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0 })
     console.log('starting review')
   }
 

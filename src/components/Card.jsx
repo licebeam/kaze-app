@@ -96,7 +96,7 @@ class Card extends Component {
             </div>
           ) : (
               <div>
-                {cards[place].id}
+                {cards[place].id} / {cards.length}
                 <br></br>
                 {showKanji ? (<div>{cards[place].kan}</div>) : null}
                 <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
