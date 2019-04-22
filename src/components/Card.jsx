@@ -13,7 +13,11 @@ class Card extends Component {
   }
 
   componentDidUpdate(prevProps) {
+
     if (prevProps.place !== this.props.place) {
+      localStorage.setItem('test', 'help local is working')
+      var local = localStorage.getItem('test')
+      console.log(local)
       this.setState({ flipped: false })
       if (this.props.timer) {
         this.props.startTimer(4000)
