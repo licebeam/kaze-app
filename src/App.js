@@ -17,6 +17,7 @@ let timerId = null;
 
 class App extends Component {
   state = {
+    allCards: core100,
     title: 'Core 1000',
     cards: core100,
     place: 0,
@@ -68,6 +69,7 @@ class App extends Component {
   changeSet = (cards, set) => {
     this.setState({
       cards: cards,
+      allCards: cards,
       currentSet: set,
       place: 0,
       timer: false,
@@ -79,8 +81,8 @@ class App extends Component {
   }
 
   updatePlace = (num) => {
-    const { place } = this.state;
-    if (num === 1 && place <= 98) {
+    const { place, cards } = this.state;
+    if (num === 1 && place <= cards.length - 1) {
       this.setState({ place: this.state.place + num })
     }
     if (num === -1 && place >= 1) {
@@ -150,6 +152,13 @@ class App extends Component {
     }
   }
 
+  startReview = () => {
+    const { allCards, badCardData, currentSet } = this.state;
+    console.log(allCards)
+    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet)), place: 0 })
+    console.log('starting review')
+  }
+
   render() {
     const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet } = this.state;
     return (
@@ -163,7 +172,7 @@ class App extends Component {
           </select>
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
-        {badCardData.find(c => c.set === this.state.currentSet) ? (<button>Review</button>) : null}
+        {badCardData.find(c => c.set === currentSet) ? (<button onClick={() => this.startReview()}>Review</button>) : null}
         {cards && cards.length && (cardsGood + cardsBad !== 100) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
           <button onClick={() => this.updateCardData('bad')}>Hard</button>
           <button onClick={() => this.updateCardData('good')}>Easy</button></div>) : <div>COMPLETED</div>}
