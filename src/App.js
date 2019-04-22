@@ -30,10 +30,14 @@ class App extends Component {
 
   getSaveData = () => {
     if (JSON.parse(localStorage.getItem('goodCardData'))) {
-      this.setState({ goodCardData: JSON.parse(localStorage.getItem('goodCardData')) })
+      this.setState({ goodCardData: JSON.parse(localStorage.getItem('goodCardData')) }, () => {
+        this.setState({ cardsGood: this.state.goodCardData.length })
+      })
     }
     if (JSON.parse(localStorage.getItem('badCardData'))) {
-      this.setState({ badCardData: JSON.parse(localStorage.getItem('badCardData')) })
+      this.setState({ badCardData: JSON.parse(localStorage.getItem('badCardData')) }, () => {
+        this.setState({ cardsBad: this.state.badCardData.length })
+      })
     }
   }
 
