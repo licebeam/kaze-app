@@ -27,7 +27,16 @@ class App extends Component {
   }
 
   changeSet = (set) => {
-    this.setState({ cards: set });
+    this.setState({
+      cards: set,
+      place: 0,
+      timer: false,
+      cardsGood: null,
+      cardsSkipped: null,
+      cardsBad: null
+    }, () => {
+      this.stopTimer();
+    });
   }
 
   updatePlace = (num) => {
