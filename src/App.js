@@ -164,9 +164,10 @@ class App extends Component {
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
         {badCardData.find(c => c.set === this.state.currentSet) ? (<button>Review</button>) : null}
-        <Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
-        <button onClick={() => this.updateCardData('bad')}>Hard</button>
-        <button onClick={() => this.updateCardData('good')}>Easy</button>
+        {cards && cards.length ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
+          <button onClick={() => this.updateCardData('bad')}>Hard</button>
+          <button onClick={() => this.updateCardData('good')}>Easy</button></div>) : <div>COMPLETED</div>}
+
         <div>Easy: {cardsGood || '0'}/100</div>
         <div>Hard: {cardsBad || '0'}/100</div>
       </Container >
