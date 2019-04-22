@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import Card from './components/Card';
 import './App.css';
-import core100 from './json-data/core2000/core1200';
+import core100 from './json-data/core1000/core100';
 
 let timerId = null;
 
 class App extends Component {
-  state = { cards: core100, place: 0, timer: false }
+  state = { cards: core100, place: 0, timer: false, cardsGood: null, cardsSkipped: null, cardsBad: null }
 
   updatePlace = (num) => {
     const { place } = this.state;
@@ -33,14 +33,40 @@ class App extends Component {
     })
   }
 
+  updateCardData = (type) => {
+    const { cardsGood, cardsBad, cardsSkipped } = this.state;
+    switch (type) {
+      case 'good':
+        this.setState({ cardsGood: cardsGood + 1 }, () => { this.updatePlace(1) })
+        break;
+      case 'bad':
+        this.setState({ cardsBad: cardsBad + 1 }, () => { this.updatePlace(1) })
+        break;
+      case 'skip':
+        this.setState({ cardsSkipped: cardsSkipped + 1 }, () => { this.updatePlace(1) })
+        break;
+
+      default:
+        break;
+    }
+  }
+
   render() {
-    const { cards, place, timer } = this.state;
+    const { cards, place, timer, cardsGood, cardsBad, cardsSkipped } = this.state;
     return (
       <div className="App">
-        <button onClick={() => this.startTimer(5000)}>{timer ? 'Stop Timer' : 'Start Timer'}</button>
+        <button onClick={() => this.startTimer(4000)}>{timer ? 'Stop Timer' : 'Start Timer'}</button>
         <Card cards={cards} place={place} />
-        <button onClick={() => this.updatePlace(-1)}> Back </button>
-        <button onClick={() => this.updatePlace(1)}>Forward</button>
+        {!timer ? (<div>
+          <button onClick={() => this.updateCardData('skip')}>Skip</button>
+          {/* TODO add this when saving functionality is implemented */}
+
+          <button onClick={() => this.updateCardData('bad')}>Hard</button>
+          <button onClick={() => this.updateCardData('good')}>Easy</button>
+          <div>Score: {cardsGood || '0'}/100</div>
+          <div>Hard: {cardsBad || '0'}/100</div>
+          <div>Skipped: {cardsSkipped || '0'}/100</div>
+        </div>) : null}
       </div >
     );
   }
