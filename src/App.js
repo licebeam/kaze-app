@@ -6,7 +6,14 @@ import core100 from './json-data/core1000/core100';
 let timerId = null;
 
 class App extends Component {
-  state = { cards: core100, place: 0, timer: false, cardsGood: null, cardsSkipped: null, cardsBad: null }
+  state = {
+    cards: core100,
+    place: 0,
+    timer: false,
+    cardsGood: null,
+    cardsSkipped: null,
+    cardsBad: null
+  }
 
   updatePlace = (num) => {
     const { place } = this.state;
