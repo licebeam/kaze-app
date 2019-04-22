@@ -22,7 +22,6 @@ class App extends Component {
     place: 0,
     timer: false,
     cardsGood: null,
-    cardsSkipped: null,
     cardsBad: null,
     goodCardData: [],
     badCardData: [],
@@ -69,7 +68,6 @@ class App extends Component {
       place: 0,
       timer: false,
       cardsGood: null,
-      cardsSkipped: null,
       cardsBad: null
     }, () => {
       this.stopTimer();
@@ -103,16 +101,13 @@ class App extends Component {
   }
 
   updateCardData = (type) => {
-    const { cardsGood, cardsBad, cardsSkipped } = this.state;
+    const { cardsGood, cardsBad } = this.state;
     switch (type) {
       case 'good':
         this.setState({ cardsGood: cardsGood + 1 }, () => { this.saveCardToStorage('good'); })
         break;
       case 'bad':
         this.setState({ cardsBad: cardsBad + 1 }, () => { this.saveCardToStorage('bad'); })
-        break;
-      case 'skip':
-        this.setState({ cardsSkipped: cardsSkipped + 1 }, () => { this.saveCardToStorage('bad'); })
         break;
 
       default:
@@ -152,7 +147,7 @@ class App extends Component {
   }
 
   render() {
-    const { cards, place, timer, cardsGood, cardsBad, cardsSkipped, title } = this.state;
+    const { cards, place, timer, cardsGood, cardsBad, title } = this.state;
     return (
       <Container className="App">
         <h2>{title}</h2>
@@ -165,12 +160,10 @@ class App extends Component {
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
         <Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
-        <button onClick={() => this.updateCardData('skip')}>Skip</button>
         <button onClick={() => this.updateCardData('bad')}>Hard</button>
         <button onClick={() => this.updateCardData('good')}>Easy</button>
         <div>Score: {cardsGood || '0'}/100</div>
         <div>Hard: {cardsBad || '0'}/100</div>
-        <div>Skipped: {cardsSkipped || '0'}/100</div>
       </Container >
     );
   }
