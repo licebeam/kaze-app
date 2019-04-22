@@ -26,11 +26,13 @@ class App extends Component {
     cardsBad: null,
     goodCardData: [],
     badCardData: [],
+    currentSet: 'core100'
   }
 
-  changeSet = (set) => {
+  changeSet = (cards, set) => {
     this.setState({
-      cards: set,
+      cards: cards,
+      currentSet: set,
       place: 0,
       timer: false,
       cardsGood: null,
@@ -86,11 +88,33 @@ class App extends Component {
   }
 
   saveCardToStorage = (type) => {
-    const { goodCardData, badCardData } = this.state;
+    const { goodCardData, badCardData, place, title, currentSet } = this.state;
+    let goodCardData;
+    let badCardData;
     if (type === 'good') {
-      return localStorage.set('goodCardData', goodCardData)
+      goodCardData.push(
+        {
+          id: cards[place].id,
+          date: Date.now(),
+          group: title,
+          set: currentSet
+        }
+      )
+      this.setState({ goodCardData }, () => {
+        return localStorage.set('goodCardData', goodCardData)
+      })
     } else {
-      return localStorage.set('badCardData', badCardData)
+      badCardData.push(
+        {
+          id: cards[place].id,
+          date: Date.now(),
+          group: title,
+          set: currentSet
+        }
+      )
+      this.setState({ badCardData }, () => {
+        return localStorage.set('badCardData', badCardData)
+      })
     }
   }
 

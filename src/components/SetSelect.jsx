@@ -9,13 +9,13 @@ class SetSelect extends Component {
     const { changeSet } = this.props;
     switch (set) {
       case 'core100':
-        changeSet(core100)
+        changeSet(core100, set)
         break;
       case 'core200':
-        changeSet(core200)
+        changeSet(core200, set)
         break;
       case 'core300':
-        changeSet(core300)
+        changeSet(core300, set)
         break;
 
       default:
