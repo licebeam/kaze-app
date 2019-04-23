@@ -132,15 +132,14 @@ class App extends Component {
     let { goodCardData, badCardData, place, title, currentSet, cards } = this.state;
     const card = {
       id: cards[place].id,
-      date: Date.now(),
       group: title,
       set: currentSet
     }
     if (type === 'good') {
       goodCardData.push(card)
       this.setState({ goodCardData }, () => {
-        this.updatePlace(1)
         localStorage.setItem('badCardData', JSON.stringify(badCardData.filter(c => c === card)))
+        this.updatePlace(1)
         this.setState({ badCardData })
         return localStorage.setItem('goodCardData', JSON.stringify(goodCardData))
       })
