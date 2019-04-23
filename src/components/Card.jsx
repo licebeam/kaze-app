@@ -1,6 +1,42 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 let timerBarId;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: darkgoldenrod;
+  align-content: center;
+  justify-content: center; 
+  padding: 20px;
+  .holder{
+    height: 300px;
+  }
+`
+const Section = styled.div`
+  display: flex;
+  flex: 1;
+  align-content: center;
+  justify-content: center; 
+  text-align: center;
+  .text-holder{
+    align-self: center;
+    justify-self: center; 
+    text-align: center;
+    flex: 8;
+    height: 30px;
+  }
+  button{
+    flex: 1;
+    height: 20px;
+    width: 100px;
+  }
+  .sentences{
+    min-height: 40px;
+    max-height: 40px;
+  }
+`
 class Card extends Component {
   state = {
     flipped: false,
@@ -55,69 +91,104 @@ class Card extends Component {
     } = this.state;
 
     return (
-      <div>
-        {!timer
-          ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
-          : (<button onClick={() => { stopTimer(); clearInterval(timerBarId); this.setState({ timerBar: 0 }) }}>Stop Timer</button>)
-        }
-        <p>{timerBar || '0'}</p>
+      <CardContainer>
+        <Section>
+          {!timer
+            ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
+            : (<button onClick={() => { stopTimer(); clearInterval(timerBarId); this.setState({ timerBar: 0 }) }}>Stop Timer</button>)
+          }
+          <p>{timerBar || '0'}</p>
+        </Section>
         {
           flipped ? (
-            <div>
-              {place + 1} / {cards.length}
-              <br></br>
-              {showKanji ? (
-                <div>
-                  {cards[place].kan}
+            <div className="holder">
+              <Section>
+                <div className='text-holder'>
+                  {place + 1} / {cards.length}
                 </div>
-              ) : null}
-              <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
-              <br></br>
-              {showKana ? (
-                <div>
-                  {cards[place].tran !== 'null' ? cards[place].tran : null}
+              </Section>
+              <Section>
+                <div className='text-holder'>
+                  {showKanji ? (
+                    <div>
+                      {cards[place].kan}
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-              <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
-              <br></br>
-              <p>Translation:</p>
-              {cards[place].english !== 'null' ? cards[place].english : null}
-              {showSentences ? (
-                <div>
-                  <p>Sentences:</p>
-                  {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
-                  <br></br>
-                  {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
-                  <br></br>
-                  {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
+                <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
+              </Section>
+              <Section>
+                <div className='text-holder'>
+                  {showKana ? (
+                    <div>
+                      {cards[place].tran !== 'null' ? cards[place].tran : null}
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
-              <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
+                <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
+              </Section>
+              <Section>
+                <p>Translation:</p>
+                <div className='text-holder'>
+                  {cards[place].english !== 'null' ? cards[place].english : null}
+                </div>
+              </Section>
+              <Section>
+                <div className='text-holder'>
+                  {showSentences ? (
+                    <div>
+                      <p>Sentences:</p>
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                      <br></br>
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                      <br></br>
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
+                    </div>
+                  ) : null}
+                </div>
+                <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
+              </Section>
             </div>
           ) : (
-              <div>
-                {place + 1} / {cards.length}
-                <br></br>
-                {showKanji ? (<div>{cards[place].kan}</div>) : null}
-                <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
-                <br></br>
-                {showKana ? (<div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>) : null}
-                <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
-                <br></br>
-                {showSentences ? (
-                  <div>
-                    <p>Sentences:</p>
-                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
-                    <br></br>
-                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+              <div className="holder">
+                <Section>
+                  <div className='text-holder'>
+                    {place + 1} / {cards.length}
                   </div>
-                ) : null}
-                <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
+                </Section>
+                <Section>
+                  <div className='text-holder'>
+                    {showKanji ? (<div>{cards[place].kan}</div>) : null}
+                  </div>
+                  <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
+                </Section>
+                <Section>
+                  <div className='text-holder'>
+                    {showKana ? (<div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>) : null}
+                  </div>
+                  <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
+                </Section>
+                <Section>
+                  <div className='text-holder'></div>
+                </Section>
+                <Section className='sentences'>
+                  <div className='text-holder'>
+                    {showSentences ? (
+                      <div>
+                        <p>Sentences:</p>
+                        {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                        <br></br>
+                        {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                      </div>
+                    ) : null}
+                  </div>
+                  <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
+                </Section>
               </div>
             )
         }
         <button onClick={() => this.flipCard()}>Flip</button>
-      </div >
+      </CardContainer >
     )
   }
 }
