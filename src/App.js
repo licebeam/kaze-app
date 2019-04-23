@@ -129,24 +129,31 @@ class App extends Component {
   }
 
   saveCardToStorage = (type) => {
-    let { goodCardData, badCardData, place, title, currentSet, cards } = this.state;
+    const { goodCardData, badCardData, place, title, currentSet, cards } = this.state;
+    let good = goodCardData;
+    let bad = badCardData
     const card = {
       id: cards[place].id,
       group: title,
       set: currentSet
     }
     if (type === 'good') {
-      goodCardData.push(card)
-      this.setState({ goodCardData }, () => {
-        localStorage.setItem('badCardData', JSON.stringify(badCardData.filter(c => c === card)))
+      good.push(card)
+      this.setState({ goodCardData: good }, () => {
         this.updatePlace(1)
-        this.setState({ badCardData })
+        console.log(card)
+        const baddies = JSON.parse(localStorage.getItem('badCardData', updatedBadCards))
+        console.log(baddies)
+        const updatedBadCards = baddies.filter(c => c.id !== card.id && c.set === currentSet);
+        console.log(updatedBadCards)
+        localStorage.setItem('badCardData', JSON.stringify(updatedBadCards))
+        this.setState({ badCardData: updatedBadCards })
         return localStorage.setItem('goodCardData', JSON.stringify(goodCardData))
       })
     } else {
       if (!badCardData.find(c => c.set === currentSet && c.id === card.id))
-        badCardData.push(card);
-      this.setState({ badCardData }, () => {
+        bad.push(card);
+      this.setState({ badCardData: bad }, () => {
         this.updatePlace(1)
         return localStorage.setItem('badCardData', JSON.stringify(badCardData))
       })
