@@ -8,7 +8,7 @@ import core100 from './json-data/core1000/core100';
 const Container = styled.div`
   margin: 0 auto;
   height: 100vh;
-  width: 50%;
+  width: 80vw;
   display: flex;
   flex-direction: column;
 `
@@ -166,8 +166,8 @@ class App extends Component {
     const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet, reviewing } = this.state;
     return (
       <Container className="App">
-        <h2>{title}</h2>
-        <h2>{reviewing ? 'Reviewing' : null}</h2>
+        <div>{title}</div>
+        <div>{reviewing ? 'Reviewing' : null}</div>
         <div>
           <select onChange={(e) => this.setState({ title: e.target.value })}>
             <option value='Core 1000'>Core 1000</option>
