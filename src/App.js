@@ -141,11 +141,8 @@ class App extends Component {
       good.push(card)
       this.setState({ goodCardData: good }, () => {
         this.updatePlace(1)
-        console.log(card)
         const baddies = JSON.parse(localStorage.getItem('badCardData', updatedBadCards))
-        console.log(baddies)
         const updatedBadCards = baddies.filter(c => c.id !== card.id && c.set === currentSet);
-        console.log(updatedBadCards)
         localStorage.setItem('badCardData', JSON.stringify(updatedBadCards))
         this.setState({ badCardData: updatedBadCards })
         return localStorage.setItem('goodCardData', JSON.stringify(goodCardData))
