@@ -129,15 +129,14 @@ class App extends Component {
   }
 
   saveCardToStorage = (type) => {
-    //TODO remove cards from bad if they update from bad to good.
     let { goodCardData, badCardData, place, title, currentSet, cards } = this.state;
+    const card = {
+      id: cards[place].id,
+      date: Date.now(),
+      group: title,
+      set: currentSet
+    }
     if (type === 'good') {
-      const card = {
-        id: cards[place].id,
-        date: Date.now(),
-        group: title,
-        set: currentSet
-      }
       goodCardData.push(card)
       this.setState({ goodCardData }, () => {
         this.updatePlace(1)
@@ -146,14 +145,8 @@ class App extends Component {
         return localStorage.setItem('goodCardData', JSON.stringify(goodCardData))
       })
     } else {
-      badCardData.push(
-        {
-          id: cards[place].id,
-          date: Date.now(),
-          group: title,
-          set: currentSet
-        }
-      )
+      if (!badCardData.find(c => c.set === currentSet && c.id === card.id))
+        badCardData.push(card);
       this.setState({ badCardData }, () => {
         this.updatePlace(1)
         return localStorage.setItem('badCardData', JSON.stringify(badCardData))
