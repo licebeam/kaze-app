@@ -14,11 +14,13 @@ const CardContainer = styled.div`
     padding: 10px;
   }
   .kana1{
+    height:100px;
     font-size: 2rem;
     padding: 10px;
     font-weight: bold;
   }
   .kana2{
+    height:100px;
     font-size: 2rem;
     padding: 10px;
     font-weight: bold;
@@ -26,6 +28,12 @@ const CardContainer = styled.div`
   }
   .sentences{
     font-size: 1rem;
+  }
+  button{
+    align-self: center;
+    text-align: center;
+    height: 20px;
+    width: 100px;
   }
 `
 const Section = styled.div`
