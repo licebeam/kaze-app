@@ -65,6 +65,12 @@ class App extends Component {
       this.getSaveData()
       this.removeAllUsedCards()
     }
+    if (this.state.reviewing && this.state.cards === 0) {
+      this.setState({ reviewing: false }, () => {
+        this.getSaveData()
+        this.removeAllUsedCards()
+      })
+    }
   }
 
   changeSet = (cards, set) => {
