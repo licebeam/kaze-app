@@ -21,6 +21,7 @@ class App extends Component {
     title: 'Core 1000',
     cards: core100,
     place: 0,
+    reviewing: false,
     timer: false,
     cardsGood: null,
     cardsBad: null,
@@ -156,14 +157,15 @@ class App extends Component {
 
   startReview = () => {
     const { allCards, badCardData, currentSet } = this.state;
-    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0, cardsGood: 0, cardsBad: 0 })
+    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0, cardsGood: 0, cardsBad: 0, reviewing: true })
   }
 
   render() {
-    const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet } = this.state;
+    const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet, reviewing } = this.state;
     return (
       <Container className="App">
         <h2>{title}</h2>
+        <h2>{reviewing ? 'Reviewing' : null}</h2>
         <div>
           <select onChange={(e) => this.setState({ title: e.target.value })}>
             <option value='Core 1000'>Core 1000</option>
@@ -172,7 +174,7 @@ class App extends Component {
           </select>
         </div>
         <SetSelect title={title} changeSet={this.changeSet} />
-        {badCardData.find(c => c.set === currentSet) ? (<button onClick={() => this.startReview()}>Review</button>) : null}
+        {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : null}
         {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
           <button onClick={() => this.updateCardData('bad')}>Hard</button>
           <button onClick={() => this.updateCardData('good')}>Easy</button></div>) : <div>COMPLETED</div>}
