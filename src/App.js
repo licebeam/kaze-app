@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   .header{
+    text-align: center;
     height: 120px;
     .title{
       font-size: 2rem;

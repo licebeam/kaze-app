@@ -9,6 +9,10 @@ const CardContainer = styled.div`
   flex-direction: column;
   background-color: gray;
   height: 100%; 
+  .timer-section{
+    height: 40px;
+    margin: 10px;
+  }
   .place{
     font-size: .7rem;
     padding: 10px;
@@ -99,14 +103,14 @@ class Card extends Component {
 
     return (
       <div>
-        <Section>
-          {!timer
-            ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
-            : (<button onClick={() => { stopTimer(); clearInterval(timerBarId); this.setState({ timerBar: 0 }) }}>Stop Timer</button>)
-          }
-          <p>{timerBar || '0'}</p>
-        </Section>
         <CardContainer>
+          <Section className="timer-section">
+            {!timer
+              ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
+              : (<button onClick={() => { stopTimer(); clearInterval(timerBarId); this.setState({ timerBar: 0 }) }}>Stop Timer</button>)
+            }
+            <div>{timerBar || '0'}</div>
+          </Section>
           {
             flipped ? (
               <div>
