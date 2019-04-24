@@ -25,7 +25,16 @@ const CardContainer = styled.div`
     font-weight: bold;
     color: orange;
   }
+  .translation{
+    height: 20px;
+    margin: 1rem;
+    .text{
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
   .sentences{
+    height: 70px;
     font-size: 1rem;
   }
   button{
@@ -126,17 +135,17 @@ class Card extends Component {
                     </div>
                   </Section>
                 </Row>
-                <div>Translation:</div>
                 <Section className="translation">
+                  <div>Translation:</div>
                   {cards[place].english !== 'null' ? cards[place].english : null}
                 </Section>
                 <Section className='sentences'>
                   <div>
-                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : '-'}
                     <br></br>
-                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : '-'}
                     <br></br>
-                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
+                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : '-'}
                   </div>
                 </Section>
               </div>
@@ -153,11 +162,17 @@ class Card extends Component {
                       <div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>
                     </Section>
                   </Row>
+                  <Section className="translation">
+                    {/* <div>Translation:</div>
+                    {cards[place].english !== 'null' ? cards[place].english : null} */}
+                  </Section>
                   <Section className='sentences'>
                     <div>
-                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : '-'}
                       <br></br>
-                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : '-'}
+                      <br></br>
+                      <div>-</div>
                     </div>
                   </Section>
                 </div>
