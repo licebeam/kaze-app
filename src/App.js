@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import SetSelect from './components/SetSelect';
 import Card from './components/Card';
-import './App.css';
 import core100 from './json-data/core1000/core100';
 
 const Container = styled.div`
