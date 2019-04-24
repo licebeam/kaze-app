@@ -16,6 +16,14 @@ const Container = styled.div`
       padding: 10px;
       display: flex;
       select{
+        cursor: pointer;
+              color: #fafafa;
+      background-color: #282c34;
+      transition: .2s all;
+      &:hover{
+        color: #282c34;
+        background-color: #fafafa;
+      }
         align-content: center;
         justify-content: center;
         margin: 5px;
@@ -53,9 +61,13 @@ const Container = styled.div`
     text-align: center;
     .hard-btn{
       color: red;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
     .easy-btn{
       color: green;
+      font-size: 1.2rem;
+      font-weight: bold;
     }
     button{
       margin: 20px;
