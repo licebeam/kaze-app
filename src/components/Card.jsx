@@ -8,9 +8,6 @@ const CardContainer = styled.div`
   border-radius: 10px;
   flex-direction: column;
   background-color: gray;
-  .timer-section{
-    height: 40px;
-  }
   .place{
     padding: 10px;
     font-size: .7rem;
