@@ -134,7 +134,6 @@ class Card extends Component {
                 <Section className="translation">
                   {cards[place].english !== 'null' ? cards[place].english : null}
                 </Section>
-                <div>Sentences:</div>
                 <Section className='sentences'>
                   <div>
                     {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
@@ -158,7 +157,6 @@ class Card extends Component {
                       <div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>
                     </Section>
                   </Row>
-                  <p>Sentences:</p>
                   <Section className='sentences'>
                     <div>
                       {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
