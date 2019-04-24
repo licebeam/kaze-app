@@ -53,9 +53,6 @@ const Row = styled.div`
 class Card extends Component {
   state = {
     flipped: false,
-    showKanji: true,
-    showKana: true,
-    showSentences: true,
     timerBar: 0,
   }
 
@@ -97,9 +94,6 @@ class Card extends Component {
 
     const {
       flipped,
-      showKanji,
-      showKana,
-      showSentences,
       timerBar,
     } = this.state;
 
