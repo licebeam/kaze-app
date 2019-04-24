@@ -13,13 +13,13 @@ const CardContainer = styled.div`
     font-size: .7rem;
   }
   .kana1{
-    height:100px;
+    height:2.1rem;
     font-size: 2rem;
     padding: 10px;
     font-weight: bold;
   }
   .kana2{
-    height:100px;
+    height:2.1rem;
     font-size: 2rem;
     padding: 10px;
     font-weight: bold;
