@@ -13,6 +13,12 @@ const Container = styled.div`
   .header{
     text-align: center;
     height: 120px;
+     button{
+      margin: 20px;
+      height: 20px;
+      width: 100px;
+      border-radius: 8px;
+    }
     .title{
       font-size: 2rem;
       font-weight: bold;
@@ -44,6 +50,9 @@ const Container = styled.div`
     font-size:1.2rem;
     padding: 20px;
     height: 120px;
+  }
+  .card-container{
+    margin-top: 40px;
   }
 `
 
