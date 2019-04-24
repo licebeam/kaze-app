@@ -5,9 +5,6 @@ import Card from './components/Card';
 import core100 from './json-data/core1000/core100';
 
 const Container = styled.div`
-  margin: 0 auto;
-  height: 100%;
-  width: 100vw;
   display: flex;
   flex-direction: column;
   .header{
@@ -30,7 +27,6 @@ const Container = styled.div`
     }
    
      button{
-      margin: 20px;
       height: 20px;
       width: 100px;
       border-radius: 8px;
@@ -68,7 +64,7 @@ const Container = styled.div`
     height: 120px;
   }
   .card-container{
-    margin-top: 40px;
+    margin-top: 20px;
   }
 `
 
