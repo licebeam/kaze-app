@@ -24,7 +24,6 @@ button{
   background: none;
   cursor: pointer;
   text-align: center;
-  -webkit-appearance:none;
 }
 
 select{
@@ -32,5 +31,4 @@ select{
   background: none;
   text-align: center;
   text-align-last:center;
-  -webkit-appearance:none;
 }
