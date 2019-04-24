@@ -121,21 +121,14 @@ class Card extends Component {
                 </Section>
                 <Row>
                   <Section className='kana1'>
-                    {showKanji ? (
-                      <div>
-                        {cards[place].kan}
-                      </div>
-                    ) : null}
-
-                    <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
+                    <div>
+                      {cards[place].kan}
+                    </div>
                   </Section>
                   <Section className='kana2'>
-                    {showKana ? (
-                      <div>
-                        {cards[place].tran !== 'null' ? cards[place].tran : null}
-                      </div>
-                    ) : null}
-                    <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
+                    <div>
+                      {cards[place].tran !== 'null' ? cards[place].tran : null}
+                    </div>
                   </Section>
                 </Row>
                 <div>Translation:</div>
@@ -144,17 +137,13 @@ class Card extends Component {
                 </Section>
                 <div>Sentences:</div>
                 <Section className='sentences'>
-                  {showSentences ? (
-                    <div>
-                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
-                      <br></br>
-                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
-                      <br></br>
-                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
-                    </div>
-                  ) : null}
-
-                  <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
+                  <div>
+                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                    <br></br>
+                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                    <br></br>
+                    {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[2] : null}
+                  </div>
                 </Section>
               </div>
             ) : (
@@ -164,24 +153,19 @@ class Card extends Component {
                   </Section>
                   <Row>
                     <Section className='kana1'>
-                      {showKanji ? (<div>{cards[place].kan}</div>) : null}
-                      <button onClick={() => this.setState({ showKanji: !showKanji })}>Show/Hide</button>
+                      <div>{cards[place].kan}</div>
                     </Section>
                     <Section className='kana2'>
-                      {showKana ? (<div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>) : null}
-                      <button onClick={() => this.setState({ showKana: !showKana })}>Show/Hide</button>
+                      <div>{cards[place].tran !== 'null' ? cards[place].tran : null}</div>
                     </Section>
                   </Row>
                   <p>Sentences:</p>
                   <Section className='sentences'>
-                    {showSentences ? (
-                      <div>
-                        {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
-                        <br></br>
-                        {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
-                      </div>
-                    ) : null}
-                    <button onClick={() => this.setState({ showSentences: !showSentences })}>Show/Hide</button>
+                    <div>
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[0] : null}
+                      <br></br>
+                      {cards[place].sentences !== 'null' ? cards[place].sentences.split('。')[1] : null}
+                    </div>
                   </Section>
                 </div>
               )
