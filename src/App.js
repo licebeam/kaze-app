@@ -25,6 +25,12 @@ const Container = styled.div`
   }
   .controls{
     text-align: center;
+    .hard-btn{
+      color: red;
+    }
+    .easy-btn{
+      color: green;
+    }
     button{
       height: 40px;
       width: 100px;
@@ -37,7 +43,6 @@ const Container = styled.div`
     padding: 20px;
     height: 120px;
   }
-  
 `
 
 let timerId = null;
@@ -188,7 +193,15 @@ class App extends Component {
 
   startReview = () => {
     const { allCards, badCardData, currentSet } = this.state;
-    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0, cardsGood: 0, cardsBad: 0, reviewing: true })
+    this.setState({ cards: allCards.filter(card => badCardData.find(c => c.set === currentSet && c.id === card.id)), place: 0, cardsGood: 0, cardsBad: 0, reviewing: true, timer: false })
+  }
+
+  stopReview = () => {
+    const { allCards } = this.state;
+    this.setState({ cards: allCards, place: 0, cardsGood: 0, cardsBad: 0, reviewing: false, timer: false }, () => {
+      this.getSaveData()
+      this.removeAllUsedCards()
+    })
   }
 
   render() {
@@ -197,7 +210,7 @@ class App extends Component {
       <Container className="App">
         <div className='header'>
           <div className='title'>{title}</div>
-          <div className='objective'>{reviewing ? 'Reviewing' : null}</div>
+          <div className='objective'>{reviewing ? 'Reviewing' : `${currentSet}`}</div>
 
           <select onChange={(e) => this.setState({ title: e.target.value })}>
             <option value='Core 1000'>Core 1000</option>
@@ -205,13 +218,13 @@ class App extends Component {
             <option value='Core 3000'>Core 3000</option> */}
           </select>
           <SetSelect title={title} changeSet={this.changeSet} />
-          {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : <button onClick={() => console.log('exit review')}>Stop Reviewing</button>}
+          {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : <button onClick={() => this.stopReview()}>Stop Reviewing</button>}
         </div>
         <div className="card-container">
           {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
             <div className="controls">
-              <button onClick={() => this.updateCardData('bad')}>Hard</button>
-              <button onClick={() => this.updateCardData('good')}>Easy</button></div>
+              <button className='hard-btn' onClick={() => this.updateCardData('bad')}>Hard</button>
+              <button className='easy-btn' onClick={() => this.updateCardData('good')}>Easy</button></div>
           </div>
           ) : <div>COMPLETED</div>}
         </div>
