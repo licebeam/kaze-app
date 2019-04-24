@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kaze-app/precache-manifest.e20b7f2893e92cf649dbc3fc071b8c20.js"
+  "/kaze-app/precache-manifest.130ff961238e33b3deae6289eb2261e3.js"
 );
 
 workbox.clientsClaim();
