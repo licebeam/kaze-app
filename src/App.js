@@ -32,6 +32,7 @@ const Container = styled.div`
       color: green;
     }
     button{
+      margin: 20px;
       height: 40px;
       width: 100px;
       border-radius: 8px;
