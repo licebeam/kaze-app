@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/kaze-app/static/js/runtime~main.f0cc837f.js"
   },
   {
-    "revision": "39161586d538ee3aa35e",
+    "revision": "12b73c9510671377e551",
     "url": "/kaze-app/static/js/main.3f3a4d68.chunk.js"
   },
   {
@@ -12,11 +12,11 @@ self.__precacheManifest = [
     "url": "/kaze-app/static/js/2.497cf947.chunk.js"
   },
   {
-    "revision": "39161586d538ee3aa35e",
-    "url": "/kaze-app/static/css/main.5dfd117f.chunk.css"
+    "revision": "12b73c9510671377e551",
+    "url": "/kaze-app/static/css/main.2b03a508.chunk.css"
   },
   {
-    "revision": "4795598d928ddd77ea721a1c680e515b",
+    "revision": "045a6e36de7c3dada81d7e1f7b025dd1",
     "url": "/kaze-app/index.html"
   }
 ];
