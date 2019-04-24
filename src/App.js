@@ -13,6 +13,22 @@ const Container = styled.div`
   .header{
     text-align: center;
     height: 120px;
+    .top-controls{
+      align-content: center;
+      justify-content: center;
+      padding: 10px;
+      display: flex;
+      select{
+        align-content: center;
+        justify-content: center;
+        margin: 5px;
+        align-self: center;
+        height: 20px;
+        width: 100px;
+        border-radius: 8px;
+      }
+    }
+   
      button{
       margin: 20px;
       height: 20px;
@@ -222,13 +238,15 @@ class App extends Component {
         <div className='header'>
           <div className='title'>{title}</div>
           <div className='objective'>{reviewing ? 'Reviewing' : `${currentSet}`}</div>
-
-          <select onChange={(e) => this.setState({ title: e.target.value })}>
-            <option value='Core 1000'>Core 1000</option>
-            {/* <option value='Core 2000'>Core 2000</option>
+          <div className="top-controls">
+            <select onChange={(e) => this.setState({ title: e.target.value })}>
+              <option value='Core 1000'>Core 1000</option>
+              {/* <option value='Core 2000'>Core 2000</option>
             <option value='Core 3000'>Core 3000</option> */}
-          </select>
-          <SetSelect title={title} changeSet={this.changeSet} />
+            </select>
+            <SetSelect title={title} changeSet={this.changeSet} />
+          </div>
+
           {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : <button onClick={() => this.stopReview()}>Stop Reviewing</button>}
         </div>
         <div className="card-container">
