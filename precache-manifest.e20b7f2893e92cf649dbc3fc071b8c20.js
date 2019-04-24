@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/kaze-app/static/css/main.b5e4bee4.chunk.css"
   },
   {
-    "revision": "38a28116e6800ad9f0da4d4cc41a940c",
+    "revision": "031c79628dcb884ddb253b0675a95338",
     "url": "/kaze-app/index.html"
   }
 ];
