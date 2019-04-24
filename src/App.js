@@ -279,7 +279,8 @@ class App extends Component {
 
   resetData = () => {
     const { currentSet, goodCardData, badCardData, allCards } = this.state;
-    if (goodCardData && badCardData) {
+    const check = window.confirm("Are you sure you want to delete all local data for this set?")
+    if (goodCardData && badCardData && check === true) {
       const bcd = JSON.parse(localStorage.getItem('badCardData'))
       const gcd = JSON.parse(localStorage.getItem('goodCardData'))
       const filteredBadCards = bcd.filter(c => c.set !== currentSet);
