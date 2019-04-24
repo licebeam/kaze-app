@@ -6,10 +6,38 @@ import core100 from './json-data/core1000/core100';
 
 const Container = styled.div`
   margin: 0 auto;
-  height: 100vh;
-  width: 80vw;
+  height: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  .header{
+    height: 120px;
+    .title{
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+    }
+    .objective{
+      text-align: center;
+      font-size: 1.2rem;
+      color: orange;
+    }
+  }
+  .controls{
+    text-align: center;
+    button{
+      height: 40px;
+      width: 100px;
+      border-radius: 8px;
+    }
+  }
+  .footer{
+    text-align: center;
+    font-size:1.2rem;
+    padding: 20px;
+    height: 120px;
+  }
+  
 `
 
 let timerId = null;
@@ -167,23 +195,30 @@ class App extends Component {
     const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet, reviewing } = this.state;
     return (
       <Container className="App">
-        <div>{title}</div>
-        <div>{reviewing ? 'Reviewing' : null}</div>
-        <div>
+        <div className='header'>
+          <div className='title'>{title}</div>
+          <div className='objective'>{reviewing ? 'Reviewing' : null}</div>
+
           <select onChange={(e) => this.setState({ title: e.target.value })}>
             <option value='Core 1000'>Core 1000</option>
             {/* <option value='Core 2000'>Core 2000</option>
             <option value='Core 3000'>Core 3000</option> */}
           </select>
+          <SetSelect title={title} changeSet={this.changeSet} />
+          {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : <button onClick={() => console.log('exit review')}>Stop Reviewing</button>}
         </div>
-        <SetSelect title={title} changeSet={this.changeSet} />
-        {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : null}
-        {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
-          <button onClick={() => this.updateCardData('bad')}>Hard</button>
-          <button onClick={() => this.updateCardData('good')}>Easy</button></div>) : <div>COMPLETED</div>}
-
-        <div>Easy: {cardsGood || '0'}/100</div>
-        <div>Hard: {cardsBad || '0'}/100</div>
+        <div className="card-container">
+          {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
+            <div className="controls">
+              <button onClick={() => this.updateCardData('bad')}>Hard</button>
+              <button onClick={() => this.updateCardData('good')}>Easy</button></div>
+          </div>
+          ) : <div>COMPLETED</div>}
+        </div>
+        <div className="footer">
+          <div>Easy: {cardsGood || '0'}/100</div>
+          <div>Hard: {cardsBad || '0'}/100</div>
+        </div>
       </Container >
     );
   }

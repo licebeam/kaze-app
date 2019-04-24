@@ -8,7 +8,7 @@ const CardContainer = styled.div`
   border-radius: 10px;
   flex-direction: column;
   background-color: gray;
-  height: 40vh; 
+  height: 100%; 
   .place{
     font-size: .7rem;
     padding: 10px;
