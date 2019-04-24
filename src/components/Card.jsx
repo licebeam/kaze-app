@@ -44,6 +44,13 @@ const CardContainer = styled.div`
     width: 100px;
     border-radius: 8px;
     margin: 10px;
+      color: #fafafa;
+      background-color: #282c34;
+      transition: .2s all;
+      &:hover{
+        color: #282c34;
+        background-color: #fafafa;
+      }
   }
 `
 const Section = styled.div`

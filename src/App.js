@@ -30,6 +30,13 @@ const Container = styled.div`
       height: 20px;
       width: 100px;
       border-radius: 8px;
+      color: #fafafa;
+      background-color: #282c34;
+      transition: .2s all;
+      &:hover{
+        color: #282c34;
+        background-color: #fafafa;
+      }
     }
     .title{
       font-size: 2rem;
@@ -55,6 +62,13 @@ const Container = styled.div`
       height: 40px;
       width: 100px;
       border-radius: 8px;
+      color: #fafafa;
+      background-color: #282c34;
+      transition: .2s all;
+      &:hover{
+        color: #282c34;
+        background-color: #fafafa;
+      }
     }
   }
   .footer{
