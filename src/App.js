@@ -13,7 +13,8 @@ const Container = styled.div`
     align-content: center;
     justify-content: center;
     button{
-      margin: 5px;
+      margin-left:5px;
+      margin-right:5px;
     }
     .disabled-btn{
       opacity: 0.2;
@@ -83,7 +84,7 @@ const Container = styled.div`
       font-weight: bold;
     }
     button{
-      margin: 20px;
+      margin: 20px 20px 0px 20px;
       height: 40px;
       width: 100px;
       border-radius: 8px;
