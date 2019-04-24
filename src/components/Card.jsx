@@ -7,6 +7,7 @@ const CardContainer = styled.div`
   display: flex;
   border-radius: 10px;
   flex-direction: column;
+  transition: .2s all;
   background-color: ${props => props.flipped ? 'black' : 'gray'};
   .place{
     padding: 10px;
@@ -31,6 +32,7 @@ const CardContainer = styled.div`
     .text{
       font-size: 1.2rem;
       font-weight: bold;
+      color: orange;
     }
   }
   .sentences{
@@ -144,7 +146,7 @@ class Card extends Component {
                 </Row>
                 <Section className="translation">
                   <div>Translation:</div>
-                  {cards[place].english !== 'null' ? cards[place].english : null}
+                  <div className="text">{cards[place].english !== 'null' ? cards[place].english : null}</div>
                 </Section>
                 <Section className='sentences'>
                   <div>
