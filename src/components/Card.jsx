@@ -10,6 +10,9 @@ const CardContainer = styled.div`
   transition: .2s all;
   background-color: ${props => props.flipped ? 'black' : 'gray'};
   .card-num{
+    position: absolute;
+    left: 0;
+    top: 0;
     font-size: .8rem;
     padding: 10px;
     font-weight: bold;
@@ -125,7 +128,7 @@ class Card extends Component {
     return (
       <div>
         <CardContainer flipped={flipped}>
-          <div className="card-num">Card Number: {cards[place].id}</div>
+          <div className="card-num">Card: {cards[place].id}</div>
           <Section className="timer-section">
             {!timer
               ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
