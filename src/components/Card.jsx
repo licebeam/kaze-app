@@ -15,7 +15,6 @@ const CardContainer = styled.div`
   }
   .place{
     font-size: .7rem;
-    padding: 10px;
   }
   .kana1{
     height:100px;
@@ -38,6 +37,8 @@ const CardContainer = styled.div`
     text-align: center;
     height: 20px;
     width: 100px;
+    border-radius: 8px;
+    margin: 10px;
   }
 `
 const Section = styled.div`
