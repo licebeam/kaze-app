@@ -85,6 +85,8 @@ class Card extends Component {
   }
 
   flipCard = () => {
+    clearInterval(timerBarId);
+    this.props.stopTimer();
     this.setState({ flipped: !this.state.flipped, timerBar: 0 })
   }
 
