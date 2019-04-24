@@ -1,13 +1,13 @@
 {
   "main.css": "/kaze-app/static/css/main.9eedeef1.chunk.css",
-  "main.js": "/kaze-app/static/js/main.c7e2c6ac.chunk.js",
-  "main.js.map": "/kaze-app/static/js/main.c7e2c6ac.chunk.js.map",
+  "main.js": "/kaze-app/static/js/main.a09cbb70.chunk.js",
+  "main.js.map": "/kaze-app/static/js/main.a09cbb70.chunk.js.map",
   "runtime~main.js": "/kaze-app/static/js/runtime~main.f0cc837f.js",
   "runtime~main.js.map": "/kaze-app/static/js/runtime~main.f0cc837f.js.map",
   "static/js/2.497cf947.chunk.js": "/kaze-app/static/js/2.497cf947.chunk.js",
   "static/js/2.497cf947.chunk.js.map": "/kaze-app/static/js/2.497cf947.chunk.js.map",
   "index.html": "/kaze-app/index.html",
-  "precache-manifest.4375208499b055f85f8044adf13de6f2.js": "/kaze-app/precache-manifest.4375208499b055f85f8044adf13de6f2.js",
+  "precache-manifest.9d49e9e96d06de0d9e73b56f838d47dc.js": "/kaze-app/precache-manifest.9d49e9e96d06de0d9e73b56f838d47dc.js",
   "service-worker.js": "/kaze-app/service-worker.js",
   "static/css/main.9eedeef1.chunk.css.map": "/kaze-app/static/css/main.9eedeef1.chunk.css.map"
 }
