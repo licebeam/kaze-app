@@ -7,7 +7,7 @@ const CardContainer = styled.div`
   display: flex;
   border-radius: 10px;
   flex-direction: column;
-  background-color: gray;
+  background-color: ${props => props.flipped ? 'black' : 'gray'};
   .place{
     padding: 10px;
     font-size: .7rem;
@@ -109,7 +109,7 @@ class Card extends Component {
 
     return (
       <div>
-        <CardContainer>
+        <CardContainer flipped={flipped}>
           <Section className="timer-section">
             {!timer
               ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
