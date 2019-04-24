@@ -58,10 +58,15 @@ const Container = styled.div`
     }
   }
   .footer{
+    display: flex;
+    align-content: center;
+    justify-content: center;
     text-align: center;
-    font-size:1.2rem;
-    padding: 20px;
-    height: 120px;
+    font-size:.8rem;
+    height: 20px;
+    .score{
+      padding: 10px;
+    }
   }
   .card-container{
     margin-top: 20px;
@@ -254,8 +259,8 @@ class App extends Component {
           ) : <div>COMPLETED</div>}
         </div>
         <div className="footer">
-          <div>Easy: {cardsGood || '0'}/100</div>
-          <div>Hard: {cardsBad || '0'}/100</div>
+          <div className="score">Easy: {cardsGood || '0'}/100</div>
+          <div className="score">Hard: {cardsBad || '0'}/100</div>
         </div>
       </Container >
     );
