@@ -7,6 +7,19 @@ import core100 from './json-data/core1000/core100';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  .row{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    button{
+      margin: 5px;
+    }
+    .disabled-btn{
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
   .header{
     text-align: center;
     height: 120px;
@@ -280,7 +293,7 @@ class App extends Component {
   }
 
   render() {
-    const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet, reviewing } = this.state;
+    const { cards, place, timer, cardsGood, cardsBad, title, badCardData, goodCardData, currentSet, reviewing } = this.state;
     return (
       <Container className="App">
         <div className='header'>
@@ -294,10 +307,23 @@ class App extends Component {
             </select>
             <SetSelect title={title} changeSet={this.changeSet} />
           </div>
-
-          {badCardData.find(c => c.set === currentSet) && !reviewing
-            ? (<button onClick={() => this.startReview()}>Review</button>)
-            : <button onClick={() => { reviewing ? this.stopReview() : this.resetData() }}>{reviewing ? 'Stop Reviewing' : 'Reset Data'}</button>}
+          <div className="row">
+            {badCardData.find(c => c.set === currentSet) && !reviewing
+              ? (<button onClick={() => this.startReview()}>Review</button>)
+              : null}
+            {!badCardData.find(c => c.set === currentSet) && !reviewing
+              ? (<button className='disabled-btn'>Review</button>)
+              : null}
+            {!badCardData.find(c => c.set === currentSet) && reviewing
+              ? (<button onClick={() => this.stopReview()}>Stop Review</button>)
+              : null}
+            {badCardData.find(c => c.set === currentSet) && reviewing
+              ? (<button onClick={() => this.stopReview()}>Stop Review</button>)
+              : null}
+            {badCardData.find(c => c.set === currentSet) || goodCardData.find(c => c.set === currentSet)
+              ? (<button onClick={() => this.resetData()}>Reset Data</button>)
+              : <button className='disabled-btn'>Reset Data</button>}
+          </div>
         </div>
         <div className="card-container">
           {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
