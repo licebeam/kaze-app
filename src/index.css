@@ -8,8 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
     background-color: #282c34;
     color: #fafafa
+    
 }
-
+* {
+      touch-action: manipulation;
+  }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
