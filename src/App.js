@@ -71,6 +71,12 @@ const Container = styled.div`
   .card-container{
     margin-top: 20px;
   }
+  .completed-section{
+    font-size: 2rem;
+    font-weight: bold;
+    color: orange;
+    text-align: center;
+  }
 `
 
 let timerId = null;
@@ -232,6 +238,21 @@ class App extends Component {
     })
   }
 
+  resetData = () => {
+    const { currentSet, goodCardData, badCardData, allCards } = this.state;
+    if (goodCardData && badCardData) {
+      const bcd = JSON.parse(localStorage.getItem('badCardData'))
+      const gcd = JSON.parse(localStorage.getItem('goodCardData'))
+      const filteredBadCards = bcd.filter(c => c.set !== currentSet);
+      const filteredGoodCards = gcd.filter(c => c.set !== currentSet);
+      localStorage.setItem('goodCardData', JSON.stringify(filteredGoodCards))
+      localStorage.setItem('badCardData', JSON.stringify(filteredBadCards))
+      this.getSaveData()
+      this.removeAllUsedCards()
+      this.changeSet(allCards, currentSet)
+    }
+  }
+
   render() {
     const { cards, place, timer, cardsGood, cardsBad, title, badCardData, currentSet, reviewing } = this.state;
     return (
@@ -248,7 +269,9 @@ class App extends Component {
             <SetSelect title={title} changeSet={this.changeSet} />
           </div>
 
-          {badCardData.find(c => c.set === currentSet) && !reviewing ? (<button onClick={() => this.startReview()}>Review</button>) : <button onClick={() => this.stopReview()}>Stop Reviewing</button>}
+          {badCardData.find(c => c.set === currentSet) && !reviewing
+            ? (<button onClick={() => this.startReview()}>Review</button>)
+            : <button onClick={() => { reviewing ? this.stopReview() : this.resetData() }}>{reviewing ? 'Stop Reviewing' : 'Reset Data'}</button>}
         </div>
         <div className="card-container">
           {cards && cards.length && (cardsGood + cardsBad !== cards.length) ? (<div><Card cards={cards} place={place} startTimer={this.startTimer} stopTimer={this.stopTimer} timer={timer} />
@@ -256,7 +279,7 @@ class App extends Component {
               <button className='hard-btn' onClick={() => this.updateCardData('bad')}>Hard</button>
               <button className='easy-btn' onClick={() => this.updateCardData('good')}>Easy</button></div>
           </div>
-          ) : <div>COMPLETED</div>}
+          ) : <div className="completed-section">COMPLETED</div>}
         </div>
         <div className="footer">
           <div className="score">Easy: {cardsGood || '0'}/100</div>
