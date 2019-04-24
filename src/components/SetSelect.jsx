@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import core100 from '../json-data/core1000/core100';
 import core200 from '../json-data/core1000/core200';
 import core300 from '../json-data/core1000/core300';
