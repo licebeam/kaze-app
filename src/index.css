@@ -20,5 +20,14 @@ code {
 }
 
 button{
+  border: 1px solid #fafafa;
+  background: none;
   cursor: pointer;
+  text-align: center;
+}
+
+select{
+  border: 1px solid #fafafa;
+  background: none;
+  text-align: center;
 }
