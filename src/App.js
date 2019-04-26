@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SetSelect from './components/SetSelect';
 import Card from './components/Card';
 import core100 from './json-data/core1000/core100';
+import core1100 from './json-data/core2000/core1100';
 
 const Container = styled.div`
   display: flex;
@@ -167,6 +168,20 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log(this.state.title)
+    if (prevState.title !== this.state.title) {
+      switch (this.state.title) {
+        case 'Core 1000':
+          this.changeSet(core100, 'core100')
+          break;
+        case 'Core 2000':
+          this.changeSet(core1100, 'core1100')
+          break;
+
+        default:
+          break;
+      }
+    }
     if (prevState.currentSet !== this.state.currentSet) {
       this.getSaveData()
       this.removeAllUsedCards()
@@ -180,6 +195,9 @@ class App extends Component {
   }
 
   changeSet = (cards, set) => {
+    console.log('test set change')
+    this.getSaveData()
+    this.removeAllUsedCards()
     this.setState({
       cards: cards,
       allCards: cards,
