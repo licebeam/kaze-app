@@ -304,8 +304,7 @@ class App extends Component {
           <div className="top-controls">
             <select onChange={(e) => this.setState({ title: e.target.value })}>
               <option value='Core 1000'>Core 1000</option>
-              {/* <option value='Core 2000'>Core 2000</option>
-            <option value='Core 3000'>Core 3000</option> */}
+              <option value='Core 2000'>Core 2000</option>
             </select>
             <SetSelect title={title} changeSet={this.changeSet} />
           </div>
