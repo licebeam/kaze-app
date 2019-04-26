@@ -4,6 +4,8 @@ import styled from 'styled-components';
 let timerBarId;
 
 const TimerBar = styled.div`
+  align-self: center;
+  justify-self: center;
   height: 10px;
   width: 100px;
   border: 1px solid #fafafa;
