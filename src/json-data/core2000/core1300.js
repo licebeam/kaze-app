@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '外国語',
   tran: 'がいこくご',
   english: 'foreign language',

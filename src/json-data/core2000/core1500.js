@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '出口',
   tran: 'でぐち',
   english: 'exit',

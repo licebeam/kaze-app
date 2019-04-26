@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '入場券',
   tran: 'にゅうじょうけん',
   english: 'entrance ticket',

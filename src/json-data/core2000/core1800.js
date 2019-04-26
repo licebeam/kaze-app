@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '別に',
   tran: 'べつに',
   english: 'particularly, not really',

@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: 'あんまり',
   tran: 'null',
   english: '(not) that much, (not) so much',

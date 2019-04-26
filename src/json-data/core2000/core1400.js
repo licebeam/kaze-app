@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '貯金',
   tran: 'ちょきん',
   english: 'money saved up',

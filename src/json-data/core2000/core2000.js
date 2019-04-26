@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '柔らかい',
   tran: 'やわらかい',
   english: 'soft, gentle',

@@ -1,4 +1,4 @@
-[{
+export default [{
   kan: '再来年',
   tran: 'さらいねん',
   english: 'the year after next',
