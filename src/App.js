@@ -194,9 +194,6 @@ class App extends Component {
   }
 
   changeSet = (cards, set) => {
-    console.log('test set change')
-    this.getSaveData()
-    this.removeAllUsedCards()
     this.setState({
       cards: cards,
       allCards: cards,
