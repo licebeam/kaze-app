@@ -168,7 +168,6 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(this.state.title)
     if (prevState.title !== this.state.title) {
       switch (this.state.title) {
         case 'Core 1000':
