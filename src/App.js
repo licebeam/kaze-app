@@ -336,8 +336,8 @@ class App extends Component {
           ) : <div className="completed-section">COMPLETED</div>}
         </div>
         <div className="footer">
-          <div className="score">Easy: {cardsGood || '0'}</div>
           <div className="score">Hard: {cardsBad || '0'}</div>
+          <div className="score">Easy: {cardsGood || '0'}</div>
         </div>
       </Container >
     );
