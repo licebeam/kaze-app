@@ -3,6 +3,17 @@ import styled from 'styled-components';
 
 let timerBarId;
 
+const TimerBar = styled.div`
+  height: 10px;
+  width: 100px;
+  border: 1px solid #fafafa;
+  transition: .1s all;
+  .fill{
+    height: 10px;
+    background-color: orange;
+    width: ${props => props.timerBar ? props.timerBar + '%' : '0%'};
+  }
+`
 const CardContainer = styled.div`
   display: flex;
   border-radius: 10px;
@@ -136,7 +147,7 @@ class Card extends Component {
               ? (<button onClick={() => { this.updateTimer(); startTimer(4000); }}>Start Timer</button>)
               : (<button onClick={() => { stopTimer(); clearInterval(timerBarId); this.setState({ timerBar: 0 }) }}>Stop Timer</button>)
             }
-            <div>{timerBar || '0'}</div>
+            <TimerBar timerBar={timerBar}><div className='fill' /></TimerBar>
           </Section>
           {
             flipped ? (
